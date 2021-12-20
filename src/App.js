@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import Axios from "axios";
+
+import DetallePersonajes from "./Pages/DetallePersonajes";
+
 function App() {
-
-
-  
-    const [list, setList] = useState({});
+  /*  const [list, setList] = useState({});
     
-    
-    useEffect(() => {
+      useEffect(() => {
       Axios({
         url: "https://rickandmortyapi.com/api/character",
       })
@@ -19,12 +18,10 @@ function App() {
         .catch((error) => {
           console.log(error);
         });
-    }, []);
+    }, []); */
   
-
-
     return (
-      <div className="container-fluid">
+ /*     <div className="container-fluid">
 			<div className="row">
 				<div className="col-md-12">
 					<div className="jumbotron">
@@ -42,8 +39,8 @@ function App() {
 			</div>
   
 	<div className="row">
-  {list.length > 0 &&list.map((item) => (
-		<div key={item.id} className="col-sd-3 card" >
+ 		 {list.length > 0 &&list.map((item) => (
+			<div key={item.id} className="col-sd-3 card" >
 			<h3>
       			{item.name}
 			</h3>
@@ -53,16 +50,18 @@ function App() {
 			/>
 			
 			<p>
-				<a className="btn" href="#">Ver detalles »</a>
+				<a  className="btn" href="#">Ver detalles »</a>
 			</p>
-		</div>
-  ))}
+			</div>
+ 		 ))}
     </div>
     </div>
     
     
 
-    );
+    );*/
+
+	 <DetallePersonajes/>)
   }
   
 
