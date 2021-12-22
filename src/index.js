@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import './index.css';
 import App from './App';
-import DetallePersonajes from './Pages/DetallePersonajes';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Router from './Router';
+import Inicio from './Pages/Inicio';
 
-//ReactDOM.render( <App />,  document.getElementById('root')
-//);
-ReactDOM.render( 
-<DetallePersonajes />,
-document.getElementById('root')
-);
+const WintRouter=document.getElementById('root');
+  render(
+   <BrowserRouter>
+   <App/>
+   </BrowserRouter>, WintRouter);  
