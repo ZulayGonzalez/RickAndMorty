@@ -1,27 +1,18 @@
 import React from 'react'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import DetallePersonajes from "./Pages/DetallePersonajes"
-import Inicio from "./Pages/Inicio"
-import { render } from 'react-dom';
+import { DetallePersonajes, Inicio, Detalle, NoFound } from "./Pages"
 
 export default function Router() {
-    return (
-    
-        <Routes>
-        <Route exact path="/"component={<Inicio/>}/>
-        <Route exact path="/detalle"component={<DetallePersonajes/>}/>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Inicio />} />
+        <Route exact path="/detallePersonaje" element={<DetallePersonajes />} />
+        <Route path="/detallePersonaje/:Id" element={<Detalle />} />
 
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>There's nothing here!</p>
-              </main>
-            }
-          />
-        
-        
+
+        <Route path="*" element={<NoFound />} />
       </Routes>
-
-    )
+    </BrowserRouter>
+  )
 }
