@@ -1,49 +1,33 @@
 import React from 'react'
-
-
-export default function DetallePersonajes(props) {
-
-
-
-    const a = localStorage.getItem("")
-    console.log(a)
-
-    
-    console.log(props)
+import Axios from "axios";
+import  { useState, useEffect } from "react";
+export default function DetallePersonajes() {
+    const [list, setList] = useState({})
+    useEffect(() => {
+		Axios({
+			url: "https://rickandmortyapi.com/api/character",
+		})
+			.then((response) => {
+				setList(response.data.results);
+				console.log(response.data.results);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+ /*
     const data = {
         "id": 38,
         "name": "Beth Smith",
         "status": "Alive",
         "species": "Human",
-        "type": "",
         "gender": "Female",
-        "origin": {
-            "name": "Earth (C-137)",
-            "url": "https://rickandmortyapi.com/api/location/1"
-        },
-        "location": {
-            "name": "Earth (C-137)",
-            "url": "https://rickandmortyapi.com/api/location/1"
-        },
-        "image": "https://rickandmortyapi.com/api/character/avatar/38.jpeg",
-        "episode": ["https://rickandmortyapi.com/api/episode/1",
-            "https://rickandmortyapi.com/api/episode/2",
-            "https://rickandmortyapi.com/api/episode/3",
-            "https://rickandmortyapi.com/api/episode/4",
-            "https://rickandmortyapi.com/api/episode/5",
-            "https://rickandmortyapi.com/api/episode/6",
-            "https://rickandmortyapi.com/api/episode/22",
-            "https://rickandmortyapi.com/api/episode/51"],
-        "url": "https://rickandmortyapi.com/api/character/38",
-        "created": "2017-11-05T09:48:44.230Z"
-    }
-
-
-
-
+        "image": "https://rickandmortyapi.com/api/character/avatar/38.jpeg"
+    }*/
 
     return (
         <div class="container-fluid">
+        {list.length > 0 && list.map((data) => (
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
@@ -83,7 +67,7 @@ export default function DetallePersonajes(props) {
                                                 </dd>
 
                                             </dl>
-                                            <a href="#" class="btn btn-secondary" type="button">Botón</a>
+                                            <a href="/" class="btn btn-secondary"  type="button">Atrás</a>
                                         </div>
                                     </div>
                                 </div>
@@ -94,11 +78,7 @@ export default function DetallePersonajes(props) {
                     </div>
                 </div>
             </div>
+        ))}
         </div>
-
-
-
-
-
     )
 }

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import DetallePersonajes from "./DetallePersonajes";
+import  Detalle from "./Detalle";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -9,14 +10,14 @@ import { Link } from "react-router-dom";
 export default function Inicio() {
 
 	const [list, setList] = useState({})
-
-	// const history = useHistory();
+//	localStorage.setItem({item}, id)
+//	const navigate= useNavigate();
 
 
 	// const handlePush = props => {
 
-	localStorage.setItem("pruea", "kcdbkjsbc")
-	// 	history.push('/detalle')
+	
+//	navigate.push('/detalle')
 	// }
 
 
@@ -34,7 +35,7 @@ export default function Inicio() {
 	}, []);
 
 	return (
-		<Route exact path="/detalle" component={<DetallePersonajes />} />,
+		<Route  path="/detallePersonajes" component={<DetallePersonajes />} />,
 		<div className="container-fluid">
 			<div className="row">
 				<div className="col-md-12">
@@ -52,7 +53,7 @@ export default function Inicio() {
 
 			<div className="row">
 				{list.length > 0 && list.map((item) => (
-					<div key={item.id} className="col-sd-3 card" >
+					<div key={item.id} className="col-md-2 card" >
 						<h3>
 							{item.name}
 						</h3>
@@ -63,9 +64,7 @@ export default function Inicio() {
 
 						<p>
 
-							<Link to="/detallePersonaje">
-								Detalle
-							</Link>
+						<a href="/DetallePersonajes" value={item.id} class="btn btn-secondary" type="button">Detalle</a>
 
 						</p>
 					</div>
