@@ -1,44 +1,13 @@
 import React from 'react'
 
 
-export default function DetallePersonajes(props) {
+export default function DetallePersonajes({ persona }) {
 
 
 
-    const a = localStorage.getItem("")
-    console.log(a)
+    const { id, image } = persona
 
-    
-    console.log(props)
-    const data = {
-        "id": 38,
-        "name": "Beth Smith",
-        "status": "Alive",
-        "species": "Human",
-        "type": "",
-        "gender": "Female",
-        "origin": {
-            "name": "Earth (C-137)",
-            "url": "https://rickandmortyapi.com/api/location/1"
-        },
-        "location": {
-            "name": "Earth (C-137)",
-            "url": "https://rickandmortyapi.com/api/location/1"
-        },
-        "image": "https://rickandmortyapi.com/api/character/avatar/38.jpeg",
-        "episode": ["https://rickandmortyapi.com/api/episode/1",
-            "https://rickandmortyapi.com/api/episode/2",
-            "https://rickandmortyapi.com/api/episode/3",
-            "https://rickandmortyapi.com/api/episode/4",
-            "https://rickandmortyapi.com/api/episode/5",
-            "https://rickandmortyapi.com/api/episode/6",
-            "https://rickandmortyapi.com/api/episode/22",
-            "https://rickandmortyapi.com/api/episode/51"],
-        "url": "https://rickandmortyapi.com/api/character/38",
-        "created": "2017-11-05T09:48:44.230Z"
-    }
-
-
+    console.log("desde el detalle", image)
 
 
 
@@ -55,8 +24,8 @@ export default function DetallePersonajes(props) {
                                     <div class="row">
                                         <div class="col-md-6" style={{ border: "1px solid #d0d0d0" }}>
                                             <h3>
-                                                {data.name}
-                                            </h3><img alt="Vista previa de la imagen del personaje" src={data.image} />
+                                                {persona.name}
+                                            </h3><img alt="Vista previa de la imagen del personaje" src={persona.image} />
                                         </div>
                                         <div class="col-md-6" style={{ border: "1px solid #d0d0d0" }}>
                                             <dl>
@@ -66,23 +35,24 @@ export default function DetallePersonajes(props) {
 
                                                 </dt>
                                                 <dd>
-                                                    {data.species}
+                                                    {persona.species}
                                                 </dd>
                                                 <dt>
                                                     Estado:
                                                 </dt>
                                                 <dd>
-                                                    {data.status}
+                                                    {persona.status}
                                                 </dd>
 
                                                 <dt>
                                                     Genero:
                                                 </dt>
                                                 <dd>
-                                                    {data.gender}
+                                                    {persona.gender}
                                                 </dd>
 
                                             </dl>
+
                                             <a href="#" class="btn btn-secondary" type="button">Botón</a>
                                         </div>
                                     </div>
@@ -90,6 +60,7 @@ export default function DetallePersonajes(props) {
                             </div>
                         </div>
                         <div class="col-md-2">
+
                         </div>
                     </div>
                 </div>

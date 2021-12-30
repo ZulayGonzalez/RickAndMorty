@@ -6,11 +6,10 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
-export default function Inicio() {
+export default function Inicio({ handle }) {
 
 	const [list, setList] = useState({})
 
-	// const history = useHistory();
 
 
 	// const handlePush = props => {
@@ -18,6 +17,8 @@ export default function Inicio() {
 	localStorage.setItem("pruea", "kcdbkjsbc")
 	// 	history.push('/detalle')
 	// }
+
+
 
 
 	useEffect(() => {
@@ -63,7 +64,7 @@ export default function Inicio() {
 
 						<p>
 
-							<Link to="/detallePersonaje">
+							<Link to="/detallePersonaje" onClick={() => handle(item)}>
 								Detalle
 							</Link>
 
