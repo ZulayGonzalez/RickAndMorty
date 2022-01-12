@@ -1,81 +1,21 @@
 
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import DetallePersonajes from "./DetallePersonajes";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import Router from "../Router";
 
+import UseContext from './UseContext'
 
-export default function Inicio({ handle }) {
+const Inicio = () => {
 
-	const [list, setList] = useState({})
-
-
-
-	// const handlePush = props => {
-
-	localStorage.setItem("pruea", "kcdbkjsbc")
-	// 	history.push('/detalle')
-	// }
-
-
-
-
-	useEffect(() => {
-		Axios({
-			url: "https://rickandmortyapi.com/api/character",
-		})
-			.then((response) => {
-				setList(response.data.results);
-				console.log(response.data.results);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
-
+	const [list, setList] = useContext(UseContext);
 	return (
-		<Route exact path="/detalle" component={<DetallePersonajes />} />,
-		<div className="container-fluid">
-			<div className="row">
-				<div className="col-md-12">
-					<div className="jumbotron">
-						<h2>
-							Hello, Zulay!
-						</h2>
-						<p>
-							Estas consumiendo la api de Rick and Morthy
-						</p>
+		<UseContext.Provider value={{
+			list,
+			setList
+		}}>
 
-					</div>
-				</div>
-			</div>
+			<Router />
 
-			<div className="row">
-				{list.length > 0 && list.map((item) => (
-					<div key={item.id} className="col-sd-3 card" >
-						<h3>
-							{item.name}
-						</h3>
-						<img
-							src={item.image}
-							height={150} width={150}
-						/>
-
-						<p>
-
-							<Link to="/detallePersonaje" onClick={() => handle(item)}>
-								Detalle
-							</Link>
-
-						</p>
-					</div>
-				))}
-			</div>
-
-		</div>
-
-
-	);
-
+		</UseContext.Provider>
+	)
 }
+export default Inicio

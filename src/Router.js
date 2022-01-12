@@ -1,32 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { DetallePersonajes, Inicio, Detalle, NoFound } from "./Pages"
+import { DetallePersonajes, Inicio, NoFound, PaginaInicial } from "./Pages"
+import Episodios from './Pages/Episodios';
+import UseContext from './Pages/UseContext';
 
 
-export default function Router() {
+const Router = () => {
 
-  const [persona, setPersona] = useState(null)
-
-
-
-  const comunicacion = (personaje) => {
-
-
-    setPersona(personaje)
-    // console.log("desde el padre", personaje)
-  }
-
-
+  const [persona, setPersona] = useState([])
+  // const comunicacion = (personaje) => {
+  //  setPersona(personaje)
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Inicio handle={comunicacion} />} />
-        <Route exact path="/detallePersonaje" element={<DetallePersonajes persona={persona} />} />
-        {/* <Route path="/detallePersonaje/:Id" element={<Detalle />} /> */}
+    <UseContext.Provider value={{ persona, setPersona }}>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<PaginaInicial />} />
+          <Route exact path="/detallePersonaje" element={<DetallePersonajes />} />
+         // <Route exact path="/Incio" element={<Inicio />} />
+          { <Route exact path="/episodios" element={<Episodios />} /> }
 
 
-        <Route path="*" element={<NoFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NoFound />} />
+        </Routes>
+      </BrowserRouter>
+    </UseContext.Provider>
   )
 }
+export default Router

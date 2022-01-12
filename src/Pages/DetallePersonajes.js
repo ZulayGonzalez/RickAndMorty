@@ -1,19 +1,17 @@
 import React from 'react'
+import { useContext } from 'react/cjs/react.development'
+import UseContext from './UseContext'
+import { Link } from "react-router-dom";
 
+const DetallePersonajes = () => {
 
-export default function DetallePersonajes({ persona }) {
+    const { persona } = useContext(UseContext);
 
-
-
-    const { id, image } = persona
-
-    console.log("desde el detalle", image)
-
-
+    if (persona.length !== undefined) return <p>no hay dato</p>
 
     return (
         <div class="container-fluid">
-            <div class="row">
+            {<div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-2">
@@ -52,8 +50,14 @@ export default function DetallePersonajes({ persona }) {
                                                 </dd>
 
                                             </dl>
+                                            <Link to="/episodios" >
+                                                Ver episodios
+                                            </Link>
 
-                                            <a href="#" class="btn btn-secondary" type="button">Botón</a>
+
+                                            {/* <pre>
+                                                {JSON.stringify(null, null, 3)}
+                                            </pre> */}
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +68,7 @@ export default function DetallePersonajes({ persona }) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
 
 
@@ -73,3 +77,5 @@ export default function DetallePersonajes({ persona }) {
 
     )
 }
+
+export default DetallePersonajes
